@@ -20,7 +20,6 @@ class CreateDummyDataSeeder extends Seeder
         Storage::put('best_hotels.json', json_encode($bestHotelsData));
 
         $topHotelsData = factory(TopHotel::class, 30)->make()->toArray();
-        dump($bestHotelsData, $topHotelsData);
 
         Storage::put('top_hotels.json', json_encode($topHotelsData));
     }
