@@ -17,8 +17,9 @@ $factory->define(BestHotel::class, function (Faker $faker) {
     return [
         'fromDate'	=>	'2020-1-1',
         'toDate'	=>	now()->format('Y-m-d'),
-        'city_code'	=>	$code,
+        'city'	=>	$code,
         'city_name'	=>	$cities[$code],
+        'numberOfAdults'    =>  random_int(1, 2),
         'hotel'	=>	$faker->streetName(),
         'hotelRate'	=>	random_int(1, 5),
         'hotelFare'	=>	$faker->randomFloat(2, 20, 500),
