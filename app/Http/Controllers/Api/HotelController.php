@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HotelDataResource;
+use App\Http\Requests\Api\HotelSearchRequest;
 use App\HotelDataFetchers\TopHotelDataFetcher;
 use App\HotelDataFetchers\BestHotelDataFetcher;
 
@@ -40,7 +41,7 @@ class HotelController extends Controller
      * @param  Request $request
      * @return Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(HotelSearchRequest $request)
     {
         foreach ($this->dataFetchers as $fetcher) {
             $this->hotelsData->push((new $fetcher)->searchHotels($request));
