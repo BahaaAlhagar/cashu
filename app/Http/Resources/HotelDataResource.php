@@ -15,7 +15,15 @@ class HotelDataResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'city'  =>  $this->city
+            'city_code'  =>  $this->city,
+            'city'  =>  $this->city_name,
+            'provider'  =>  $this->data_provider,
+            'hotel_name'    =>  $this->getHotelName(),
+            'fare'    =>  $this->getFare(),
+            'discount'  =>  $this->getDiscount(),
+            'hotel_rate'    =>  $this->getHotelRate(),
+            'adults_count'  =>  $this->getAdultsCount(),
+            'amenities'    =>  $this->getAmenities(),
         ];
     }
 }
