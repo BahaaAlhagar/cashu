@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\HotelDataResource;
 use App\HotelDataFetchers\TopHotelDataFetcher;
 use App\HotelDataFetchers\BestHotelDataFetcher;
 
@@ -44,6 +45,7 @@ class HotelController extends Controller
         foreach ($this->dataFetchers as $fetcher) {
             $this->hotelsData->push((new $fetcher)->searchHotels($request));
         }
-        return $this->hotelsData->flatten()->toArray();
+
+        return HotelDataResource::collection($this->hotelsData->flatten());
     }
 }
