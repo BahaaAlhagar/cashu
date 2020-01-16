@@ -13,7 +13,7 @@ abstract class BaseFetcher
 
     protected function getData()
     {
-        return collect(json_encode(Storage::get($this->dataFile)) ?? []);
+        return collect(json_decode(Storage::get($this->dataFile)) ?? []);
     }
 
     /**
