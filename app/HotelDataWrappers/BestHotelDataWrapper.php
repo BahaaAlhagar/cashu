@@ -18,7 +18,7 @@ class BestHotelDataWrapper extends BaseWrapper
     
     public function getDiscount()
     {
-        return $this->model->discount ?? '';
+        return $this->model->discount ?? '0';
     }
     
     public function getAdultsCount()
