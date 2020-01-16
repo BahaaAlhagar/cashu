@@ -2,6 +2,9 @@
 
 namespace App\HotelDataWrappers\Interfaces;
 
+/**
+ * Base Hotel data wrapper contract
+ */
 interface HotelDataWrapperInterface
 {
     public function getHotelName();

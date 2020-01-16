@@ -7,9 +7,12 @@ use App\HotelDataWrappers\BestHotelDataWrapper;
 
 class BestHotelDataFetcher extends BaseFetcher
 {
+    /**
+     * stored json data file name
+     * @var string
+     */
     protected $dataFile = 'best_hotels.json';
 
- 
     /**
      * Search hotels based in stored data in the json file
      * @param  Requset $request

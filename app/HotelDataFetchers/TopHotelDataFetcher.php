@@ -7,6 +7,10 @@ use App\HotelDataWrappers\TopHotelDataWrapper;
 
 class TopHotelDataFetcher extends BaseFetcher
 {
+    /**
+     * stored json data file name
+     * @var string
+     */
     protected $dataFile = 'top_hotels.json';
 
  

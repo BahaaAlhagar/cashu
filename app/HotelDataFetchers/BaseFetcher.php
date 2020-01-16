@@ -9,8 +9,16 @@ use Illuminate\Support\Facades\Storage;
  */
 abstract class BaseFetcher
 {
+    /**
+     * stored json data file name
+     * @var string
+     */
     protected $dataFile;
 
+    /**
+     * Fetch the data from $dataFile
+     * @return Illuminate\Support\Collection
+     */
     protected function getData()
     {
         return collect(json_decode(Storage::get($this->dataFile)) ?? []);

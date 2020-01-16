@@ -4,6 +4,9 @@ namespace App\HotelDataWrappers;
 
 use App\HotelDataWrappers\Interfaces\HotelDataWrapperInterface;
 
+/**
+ * Base hotel data wrapper
+ */
 abstract class BaseWrapper implements HotelDataWrapperInterface
 {
     protected $model;
@@ -14,7 +17,7 @@ abstract class BaseWrapper implements HotelDataWrapperInterface
     }
 
     /**
-     * Get model property or a localized value
+     * Get model property
      * @param  Mixed $property
      * @return Mixed
      */
