@@ -15,8 +15,8 @@ $factory->define(BestHotel::class, function (Faker $faker) {
     $code = array_rand($cities);
 
     return [
-        'fromDate'	=>	now()->subDays(random_int(1, 20))->format('Y-m-d'),
-        'toDate'	=>	now()->addDays(random_int(1, 20))->format('Y-m-d'),
+        'fromDate'	=>	now()->subDays(random_int(10, 20))->format('Y-m-d'),
+        'toDate'	=>	now()->addDays(random_int(15, 20))->format('Y-m-d'),
         'city'	=>	$code,
         'city_name'	=>	$cities[$code],
         'numberOfAdults'    =>  random_int(1, 2),

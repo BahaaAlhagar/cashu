@@ -2,6 +2,8 @@
 
 namespace App\HotelDataFetchers;
 
+use Carbon\Carbon;
+
 class BestHotelDataFetcher extends BaseFetcher
 {
     protected $dataFile = 'best_hotels.json';
@@ -14,9 +16,12 @@ class BestHotelDataFetcher extends BaseFetcher
      */
     public function searchHotels($request) : array
     {
+        $from = Carbon::parse($request->from)->format('Y-m-d');
+        $to = Carbon::parse($request->to)->format('Y-m-d');
+
         return $this->getData()
                     ->filter(function ($item) use ($request) {
-                        return $item->fromDate <= $request->from  && $item->toDate <= $request->to;
+                        return ($item->fromDate <= $request->from && $item->toDate <= $request->to);
                     })
                     ->where('city', $request->city)
                     ->where('numberOfAdults', $request->adults_count)

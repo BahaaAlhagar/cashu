@@ -27,8 +27,8 @@ class HotelController extends Controller
     public function __construct()
     {
         $this->dataFetchers = [
-            // TopHotelDataFetcher::class,
             BestHotelDataFetcher::class,
+            TopHotelDataFetcher::class,
         ];
 
         $this->hotelsData = collect([]);
