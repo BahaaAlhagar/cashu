@@ -3,6 +3,7 @@
 namespace App\HotelDataFetchers;
 
 use Carbon\Carbon;
+use App\HotelDataWrappers\TopHotelDataWrapper;
 
 class TopHotelDataFetcher extends BaseFetcher
 {
@@ -19,12 +20,13 @@ class TopHotelDataFetcher extends BaseFetcher
         $from = Carbon::parse($request->from)->toIso8601ZuluString();
         $to = Carbon::parse($request->to)->toIso8601ZuluString();
 
-        return $this->getData()
+        $data = $this->getData()
             ->filter(function ($item) use ($from, $to) {
                 return $item->from <= $from && $item->to >= $to;
             })
             ->where('city', $request->city)
-            ->where('adultsCount', $request->adults_count)
-            ->toArray();
+            ->where('adultsCount', $request->adults_count);
+
+        return wrapHotelData($data, TopHotelDataWrapper::class)->toArray();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\HotelDataFetchers;
 
 use Carbon\Carbon;
+use App\HotelDataWrappers\BestHotelDataWrapper;
 
 class BestHotelDataFetcher extends BaseFetcher
 {
@@ -19,12 +20,13 @@ class BestHotelDataFetcher extends BaseFetcher
         $from = Carbon::parse($request->from)->format('Y-m-d');
         $to = Carbon::parse($request->to)->format('Y-m-d');
 
-        return $this->getData()
+        $data = $this->getData()
                     ->filter(function ($item) use ($request) {
                         return ($item->fromDate <= $request->from && $item->toDate <= $request->to);
                     })
                     ->where('city', $request->city)
-                    ->where('numberOfAdults', $request->adults_count)
-                    ->toArray();
+                    ->where('numberOfAdults', $request->adults_count);
+
+        return wrapHotelData($data, BestHotelDataWrapper::class)->toArray();
     }
 }

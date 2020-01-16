@@ -44,7 +44,6 @@ class HotelController extends Controller
         foreach ($this->dataFetchers as $fetcher) {
             $this->hotelsData->push((new $fetcher)->searchHotels($request));
         }
-
         return $this->hotelsData->flatten()->toArray();
     }
 }
