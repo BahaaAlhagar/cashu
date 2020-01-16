@@ -14,6 +14,12 @@ class BestHotelDataFetcher extends BaseFetcher
      */
     public function searchHotels($request) : array
     {
-        return $this->getData()->toArray();
+        return $this->getData()
+                    ->filter(function ($item) use ($request) {
+                        return $item->fromDate <= $request->from  && $item->toDate <= $request->to;
+                    })
+                    ->where('city', $request->city)
+                    ->where('numberOfAdults', $request->adults_count)
+                    ->toArray();
     }
 }
