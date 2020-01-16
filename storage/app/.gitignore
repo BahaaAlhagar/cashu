@@ -1,3 +1,5 @@
 *
 !public/
 !.gitignore
+!best_hotels.json
+!top_hotels.json

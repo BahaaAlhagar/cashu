@@ -15,8 +15,8 @@ $factory->define(TopHotel::class, function (Faker $faker) {
     $code = array_rand($cities);
 
     return [
-        'from'	=>	now()->subDays(20)->toIso8601ZuluString(),
-        'to'	=>	now()->toIso8601ZuluString(),
+        'from'	=>	now()->subDays(random_int(1, 20))->startOfDay()->toIso8601ZuluString(),
+        'to'	=>	now()->addDays(random_int(1, 20))->endOfDay()->toIso8601ZuluString(),
         'city'	=>	$code,
         'city_name'	=>	$cities[$code],
         'adultsCount'	=>	random_int(1, 2),
@@ -24,6 +24,7 @@ $factory->define(TopHotel::class, function (Faker $faker) {
         'rate'	=>	random_int(1, 5),
         'price'	=>	$faker->randomFloat(2, 20, 500),
         'discount'	=>	random_int(1, 10),
+        'data_provider'  =>  'Top Hotels',
         'amenities'	=>	[
             'Random service',
             'anthoer random service',

@@ -15,14 +15,15 @@ $factory->define(BestHotel::class, function (Faker $faker) {
     $code = array_rand($cities);
 
     return [
-        'fromDate'	=>	'2020-1-1',
-        'toDate'	=>	now()->format('Y-m-d'),
+        'fromDate'	=>	now()->subDays(random_int(1, 20))->format('Y-m-d'),
+        'toDate'	=>	now()->addDays(random_int(1, 20))->format('Y-m-d'),
         'city'	=>	$code,
         'city_name'	=>	$cities[$code],
         'numberOfAdults'    =>  random_int(1, 2),
         'hotel'	=>	$faker->streetName(),
         'hotelRate'	=>	random_int(1, 5),
         'hotelFare'	=>	$faker->randomFloat(2, 20, 500),
+        'data_provider'  =>  'Best Hotels',
         'roomAmenities'	=>	[
             'Random service',
             'anthoer random service',
