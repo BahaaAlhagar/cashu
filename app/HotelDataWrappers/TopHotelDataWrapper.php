@@ -4,6 +4,9 @@ namespace App\HotelDataWrappers;
 
 use App\HotelDataWrappers\Interfaces\HotelDataWrapperInterface;
 
+/**
+ * Wrapper for easily accessing hotel data
+ */
 class TopHotelDataWrapper extends BaseWrapper
 {
     public function getHotelName()
